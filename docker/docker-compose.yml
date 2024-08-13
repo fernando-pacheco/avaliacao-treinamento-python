@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:16
+    container_name: db
+    hostname: db
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PWD:-postgres}
+      POSTGRES_DB: ${DEFAULT_DATABASE:-sdb}
+      PGDATA: /data/postgres
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "${POSTGRES_PORT:-5432}:${POSTGRES_PORT:-5432}"
+    volumes:
+      - postgres:/data/postgres
+      - ./sql:/docker-entrypoint-initdb.d
+    networks:
+      - sys-network
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    hostname: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+      - sys-network
+
+volumes:
+  postgres:
+
+networks:
+  sys-network:
+    driver: bridge
+    name: sys-network
