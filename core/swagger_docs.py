@@ -8,7 +8,16 @@ def config_swagger(app):
         title='Sample Project - APIs Documentation',
         version='v1',
         plugins=[MarshmallowPlugin()],
-        openapi_version='2.0.0'
+        openapi_version='2.0.0',
+        securityDefinitions={
+            'BearerAuth': {
+                'type': 'apiKey',
+                'name': 'Authorization',
+                'in': 'header',
+                'description': 'JWT Authorization header using the Bearer scheme. Enter your JWT token in the format "Bearer <token>"'
+            }
+        },
+        security=[{'BearerAuth': []}]
     )
 
     app.config.update({
