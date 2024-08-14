@@ -23,7 +23,6 @@ class CommentResponseSchema(ma.Schema):
 class CommentRequestPostSchema(Schema):
     body = fields.Str(required=True, default='body', help='This field cannot be blank')
     post_id = fields.Int(required=True, default='id', help='Invalid id')
-    author_id = fields.Int(required=True, default='id', help='Invalid id')
 
 class CommentRequestGetSchema(Schema):
     cid = fields.Int(required=True, default='id', help='Invalid id')

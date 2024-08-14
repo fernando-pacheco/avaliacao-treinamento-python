@@ -20,7 +20,6 @@ class LikeResponseSchema(ma.Schema):
 
 class LikeRequestPostSchema(Schema):
     post_id = fields.Int(required=True, default='id', help='Invalid id')
-    user_id = fields.Int(required=True, default='id', help='Invalid id')
 
 class LikeRequestGetSchema(Schema):
     lid = fields.Int(required=True, default='id', help='Invalid id')
