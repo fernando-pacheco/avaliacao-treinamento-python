@@ -30,6 +30,8 @@ class UserModel(db_instance.Model, UserMixin):
     created_at = db_instance.Column(db_instance.DateTime(timezone=True), default=func.now())
     updated_at = db_instance.Column(db_instance.DateTime(timezone=True), default=func.now(), onupdate=func.now())
 
+    TOKEN_EXPIRATION_TIME = ca.REDIS_EXPIRATION_TIME
+
     def __init__(self, username, email, password):
         self.username = username
         self.email = email
