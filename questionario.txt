@@ -11,6 +11,7 @@ Docker
 4 - Como você configuraria um serviço de banco de dados PostgreSQL utilizando Docker Compose?
     R: Definiria um serviço que tem como imagem o PostgreSQL, montaria as configurações do container como o nome, o host, a porta, etc., posteriormente, configuraria variáveis de ambiente para conexão com o banco de dados, como o user, password e o banco propriamente dito.
 
+
 SQLAlchemy e PostgreSQL
 1 - O que é SQLAlchemy e como ele facilita o mapeamento objeto-relacional (ORM)?
     R: O SQLAlchemy é uma ferramente de ORM, ou mapper de objetos. Ele auxilia a aplicação em realizar a conexão e em realizar as consultas de maneira mais simples e eficiente com intuito de otimizar o processo de conversação da API com o banco de dados.
@@ -25,6 +26,7 @@ SQLAlchemy e PostgreSQL
     R: Uma relação one-to-many é quando uma entidade tem uma relação com outra entidade, mas apenas uma entidade pode ter essa relação. Por exemplo, um post pode ter um único autor, mas um autor pode realizar vários posts.
     Já a relação many-to-many é quando duas entidades podem ter várias relações com outras entidades. Por exemplo, trazendo pra fora do contexto do teste, um usuário pode ter vários endereços e um endereço pode ser atribuído a várias pessoas.
 
+
 Flask-Admin
 1 - O que é Flask-Admin e quais são seus principais usos em uma aplicação Flask?
     R: Flask Admin é uma ferramente para o flask que ajuda na parte administrativa da aplicação.
@@ -34,6 +36,7 @@ Flask-Admin
 
 3 - Quais são os benefícios de utilizar Flask-Admin em uma aplicação web?
     R: O Flask Admin é uma ferramenta poderosa e customizável.
+
 
 Flask-Login e Autenticação
 1 - O que é Flask-Login e como ele auxilia na gestão de autenticação de usuários em uma aplicação Flask?
@@ -48,6 +51,7 @@ Flask-Login e Autenticação
 4 - Explique o conceito de "decorators" em Flask e como eles são usados para proteger rotas.
     R: Decorators são funções que recebem uma função como parâmetro e retornam uma nova função. Eles são usados para proteger rotas, por exemplo, para verificar se o usuário está autenticado antes de acessar uma rota, como o caso do @jwt_required no Flask-JWT-Extended.
 
+
 Flask-History
 1 - O que é Flask-History e quais são seus principais usos em uma aplicação Flask?
     R: Flask History é uma ferramente que permite, principalmente, relizar um rastreamento de alterações em uma entidade do banco de dados
@@ -58,19 +62,42 @@ Flask-History
 3 - Quais são os benefícios de manter um histórico de alterações em uma aplicação web?
     R: Além de facilitar a gestão de alterações, o rastreamento ajuda a identificar possíveis erros e garantir a integridade dos dados.
 
+
 Redis
-O que é Redis e quais são suas principais vantagens em comparação com outros bancos de dados?
-Explique como configurar o Redis para armazenamento de sessões em uma aplicação Flask.
-Como o uso de Redis pode melhorar a performance de uma aplicação web?
-O que são operações atômicas em Redis e como elas garantem a integridade dos dados?
+1 - O que é Redis e quais são suas principais vantagens em comparação com outros bancos de dados?
+    R: Redis é um banco de dados em memória que permite armazenar dados em uma estrutura de dados não relacional. Ele é projetado para ser rápido e eficiente, permitindo que os dados sejam armazenados em memória, o que significa que ele pode ser usado para armazenar grandes quantidades de dados sem a necessidade de armazenar essas informações em disco.
+
+2 - Explique como configurar o Redis para armazenamento de sessões em uma aplicação Flask.
+    R: Segue trecho de conexão e inicialização do Redis
+    redis_instance = redis.Redis(host=ca.REDIS_HOST, port=ca.REDIS_PORT, password=ca.REDIS_PWD, decode_responses=True)
+
+3 - Como o uso de Redis pode melhorar a performance de uma aplicação web?
+    R: O uso de Redis pode melhorar a performance de uma aplicação web porque permite que os dados sejam armazenados em memória, o que significa que ele pode ser acessado mais rapidamente do que armazenar os dados em disco. Além disso, o Redis é projetado para ser rápido e eficiente, o que significa que ele pode ser usado para armazenar grandes quantidades de dados sem a necessidade de armazenar essas informações em disco. Podemos também fazer com que dados persistam um certo tempo e são renovados automaticamente, garantindo a integridade dos dados.
+
+4 - O que são operações atômicas em Redis e como elas garantem a integridade dos dados?
+    R: Operações atômicas em Redis são operações que são executadas em tempo real, sem a necessidade de esperar a conclusão de uma transação.
+
 
 Desenvolvimento Web com Flask
-Explique a arquitetura MVC (Model-View-Controller) e como ela é aplicada em uma aplicação Flask.
-Quais são as diferenças entre métodos HTTP (GET, POST, PUT, DELETE) e como eles são utilizados em rotas Flask?
-Como você configuraria uma aplicação Flask para diferentes ambientes (desenvolvimento, teste, produção)?
+ 1 - Explique a arquitetura MVC (Model-View-Controller) e como ela é aplicada em uma aplicação Flask.
+    R: MVC é uma das arquiteturas mais comuns em desenvolvimento web. Ela consiste em três componentes principais: Model, View e Controller. A model é responsável por descrever as entidades do sistema, a view é responsável por exibir a interface do usuário e o controller é responsável por interagir com o model e a view, é o componente responsável por conter toda a lógica do sistema.
+
+2 - Quais são as diferenças entre métodos HTTP (GET, POST, PUT, DELETE) e como eles são utilizados em rotas Flask?
+    R: GET é utilizado para buscar informações, qualquer informação que não altere o estado do sistema. POST é utilizando para criar/registrar novas informações. PUT é utilizado para atualizar informações já existentes. DELETE é utilizado para excluir informações.
+
+3 - Como você configuraria uma aplicação Flask para diferentes ambientes (desenvolvimento, teste, produção)?
+    R: Para configurar o ambiente de desenvolvimento, é necessário configurar o servidor Flask para rodar em modo de desenvolvimento. Alternando as configurações (variáveis) de ambiente, é possível alterar o comportamento do servidor Flask para se adequar às necessidades do ambiente.
+
 
 Testes com Behave
-O que é a biblioteca Behave e qual é sua utilidade em testes de software?
-Explique a estrutura básica de um arquivo de feature no Behave.
-Quais são os componentes principais de um cenário de teste em Behave (Given, When, Then)?
-Como você integraria testes Behave com a sua aplicação Flask para garantir que as funcionalidades estão corretas?
+1 - O que é a biblioteca Behave e qual é sua utilidade em testes de software?
+    R: Behave é uma biblioteca de testes de software que permite a escrita de testes de software de forma simples e fácil de entender. Ela é utilizada para testar aplicações web, APIs e outros tipos de software.
+
+2 - Explique a estrutura básica de um arquivo de feature no Behave.
+    R: Um arquivo de feature no Behave é composto por um conjunto de cenários de teste. Cada cenário de teste é representado por uma linha de texto que descreve o comportamento esperado do sistema. Cada cenário de teste é separado por um cabeçalho que indica o que o cenário de teste espera ser feito.
+
+3 - Quais são os componentes principais de um cenário de teste em Behave (Given, When, Then)?
+    R: O Behave utiliza o conceito de "Given", "When" e "Then" para descrever o comportamento esperado do sistema. O "Given" é usado para definir os precondições do cenário de teste, o "When" é usado para descrever o comportamento do usuário que está sendo testado e o "Then" é usado para descrever o comportamento esperado do sistema.
+
+4 - Como você integraria testes Behave com a sua aplicação Flask para garantir que as funcionalidades estão corretas?
+    R: Para integrar testes Behave com a aplicação Flask, é necessário utilizar o framework Behave. Ele permite a integração de testes Behave com a aplicação Flask, permitindo que os testes sejam executados automaticamente e garantindo a integridade dos testes e funcionamento adequado do sistema de acordo com as regras de negócio.
